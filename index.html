@@ -6,9 +6,7 @@
   <title>CloudFront Lambda Research</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -18,87 +16,183 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       padding: 2rem;
       min-height: 100vh;
-      text-align: center;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 1.5rem;
-      padding: 2.5rem;
-      max-width: 700px;
-      width: 100%;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
+      overflow-x: hidden;
     }
 
     h1 {
       font-size: 2.8rem;
       font-weight: 800;
-      margin-bottom: 0.5em;
       background: linear-gradient(to right, #00c6ff, #0072ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin: 0;
     }
 
-    p.description {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: #e0f7ff;
+    .card {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      max-width: 1000px;
+      width: 100%;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      display: flex;
+      gap: 2rem;
       margin-bottom: 2rem;
     }
 
+    .content {
+      flex: 2;
+    }
+
+    .description {
+      font-size: 1.2rem;
+      color: #e0f7ff;
+      margin-bottom: 1rem;
+    }
+
     .note {
-      background: rgba(0, 198, 255, 0.1);
+      background: linear-gradient(135deg, rgba(0,198,255,0.15), rgba(0,114,255,0.15));
       border-left: 5px solid #00c6ff;
-      padding: 1.2em 1.5em;
+      padding: 1em 1.2em;
       border-radius: 0.75rem;
       font-size: 1.05rem;
-      font-weight: 500;
       color: #ffffff;
-      text-align: left;
-      box-shadow: 0 4px 15px rgba(0, 198, 255, 0.2);
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 4px 20px rgba(0, 198, 255, 0.15);
     }
 
     .note-title {
+      font-weight: 800;
       color: #00e6ff;
-      font-weight: 800;
-      font-size: 1.1rem;
+      position: relative;
+      display: inline-block;
     }
 
-    .note strong.highlight {
-      color: #00c6ff;
-      font-weight: 800;
+    .note-title::after {
+      content: '';
+      height: 3px;
+      background: linear-gradient(to right, #00e6ff, #0072ff);
+      width: 100%;
+      display: block;
+      margin-top: 5px;
+      animation: expand-line 2s ease-in-out infinite alternate;
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-      .card {
-        padding: 2rem 1.5rem;
-      }
+    .presented-by {
+      font-style: italic;
+      color: #c9f3ff;
+      font-size: 1rem;
+      margin-top: 12px;
+      animation: scroll-left 12s linear infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    @keyframes expand-line {
+      0% { width: 20%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .toggle-btn {
+      background: #00c6ff;
+      border: none;
+      color: #000;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 0 0.5rem;
+    }
+
+    .toggle-btn.active {
+      background: #ffffff;
+      color: #0072ff;
+    }
+
+    .note-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+      justify-content: center;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .note-column {
+      flex: 1;
+      min-width: 280px;
+      display: none;
+    }
+
+    .note-column.active {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .card { flex-direction: column; align-items: center; }
+      .note-columns { flex-direction: column; }
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>CloudFront Lambda Research</h1>
-    <p class="description">
-      Streamlining Static Web Hosting: Automating CloudFront Cache Invalidation via AWS Lambda
-    </p>
-
-    <div class="note">
-      <span class="note-title">Test Case 1:</span> Measuring <strong class="highlight">NETWORK LATENCY</strong> for a static website hosted directly on Amazon S3, without utilizing CloudFront or AWS Lambda, to establish a performance baseline.
+    <div class="content">
+      <h1>CloudFront Lambda Research</h1>
+      <p class="description">Streamlining Static Web Hosting: Automating CloudFront Cache Invalidation via AWS Lambda</p>
+      <div class="note">
+        <span class="note-title">Test Case Overview:</span>
+        Comparing <strong>network latency</strong> between hosting via <strong>Amazon S3</strong> and content delivered via <strong>Amazon CloudFront</strong> with edge caching. This establishes a performance baseline and highlights the edge caching benefits of CDN architecture.
+      </div>
+      <div class="presented-by">Presented by Raj.S.A (M00999049)</div>
     </div>
   </div>
+
+  <div class="toggle-container">
+    <button class="toggle-btn active" onclick="toggleView('s3')">S3 Only</button>
+    <button class="toggle-btn" onclick="toggleView('cloudfront')">S3 + CloudFront</button>
+  </div>
+
+  <div class="note-columns">
+    <div id="s3" class="note-column active">
+      <div class="note">
+        <span class="note-title">S3 Direct Hosting:</span>
+        This setup involves serving the static website content directly from an Amazon S3 bucket without the aid of a content delivery network. Ideal for small apps but may result in higher latency and limited geographical performance.
+      </div>
+    </div>
+    <div id="cloudfront" class="note-column">
+      <div class="note">
+        <span class="note-title">CloudFront Delivery:</span>
+        Using CloudFront distributes cached versions of the static website to edge locations globally. This enhances speed, minimizes latency, and provides a more robust user experience under various load conditions.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleView(view) {
+      document.querySelectorAll('.note-column').forEach(el => el.classList.remove('active'));
+      document.querySelector(`#${view}`).classList.add('active');
+      document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.toggle-btn[onclick*="${view}"]`).classList.add('active');
+    }
+  </script>
 </body>
 </html>
