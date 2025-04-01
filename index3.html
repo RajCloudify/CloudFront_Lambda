@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
- 
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #1e3c50, #2c5364, #2a454b);
+      background: linear-gradient(135deg, #2b5876, #4e4376, #2b5876);
       color: #ffffff;
       display: flex;
       flex-direction: column;
@@ -24,14 +25,14 @@
     h1 {
       font-size: 2.8rem;
       font-weight: 800;
-      background: linear-gradient(to right, #66c2a4, #41ae76);
+      background: linear-gradient(to right, #f5af19, #f12711);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin: 0;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.09);
       backdrop-filter: blur(10px);
       border-radius: 1.5rem;
       padding: 2rem;
@@ -49,25 +50,25 @@
 
     .description {
       font-size: 1.2rem;
-      color: #e6f5f5;
+      color: #f0f0f0;
       margin-bottom: 1rem;
     }
 
     .note {
-      background: linear-gradient(135deg, rgba(102,194,164,0.12), rgba(65,174,118,0.12));
-      border-left: 5px solid #66c2a4;
+      background: linear-gradient(135deg, rgba(245,175,25,0.12), rgba(241,39,17,0.12));
+      border-left: 5px solid #f5af19;
       padding: 1em 1.2em;
       border-radius: 0.75rem;
       font-size: 1.05rem;
       color: #ffffff;
       margin-bottom: 1rem;
       border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 4px 20px rgba(102, 194, 164, 0.15);
+      box-shadow: 0 4px 20px rgba(245, 175, 25, 0.15);
     }
 
     .note-title {
       font-weight: 800;
-      color: #8fd5c2;
+      color: #f5af19;
       position: relative;
       display: inline-block;
     }
@@ -75,7 +76,7 @@
     .note-title::after {
       content: '';
       height: 3px;
-      background: linear-gradient(to right, #8fd5c2, #41ae76);
+      background: linear-gradient(to right, #f5af19, #f12711);
       width: 100%;
       display: block;
       margin-top: 5px;
@@ -84,7 +85,7 @@
 
     .presented-by {
       font-style: italic;
-      color: #d9f2eb;
+      color: #e0e0e0;
       font-size: 1rem;
       margin-top: 12px;
       animation: scroll-left 12s linear infinite;
@@ -110,9 +111,9 @@
     }
 
     .toggle-btn {
-      background: #66c2a4;
+      background: #f5af19;
       border: none;
-      color: #1e3c50;
+      color: #2b5876;
       font-weight: 600;
       font-size: 1rem;
       padding: 0.6rem 1.2rem;
@@ -124,7 +125,7 @@
 
     .toggle-btn.active {
       background: #ffffff;
-      color: #1e3c50;
+      color: #2b5876;
     }
 
     .note-columns {
@@ -152,11 +153,11 @@
       font-size: 1.2rem;
       text-align: center;
       margin-top: 2rem;
-      color: #f0f0f0;
-      background: rgba(102, 194, 164, 0.15);
+      color: #ffffff;
+      background: rgba(245, 175, 25, 0.15);
       padding: 1rem;
       border-radius: 0.75rem;
-      box-shadow: 0 4px 15px rgba(102, 194, 164, 0.2);
+      box-shadow: 0 4px 15px rgba(245, 175, 25, 0.2);
       width: 100%;
       max-width: 1000px;
     }
